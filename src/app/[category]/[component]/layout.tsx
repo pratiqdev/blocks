@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
-
+import { Panel } from "@/components/panel";
 
 
 export const metadata: Metadata = {
@@ -16,6 +16,8 @@ export default function RootLayout({
   params: any
 }>) {
   return (
-    <>{children}</>
+    <Panel>
+      {children}
+    </Panel>
   );
 }

@@ -5,6 +5,7 @@ import { HslColor } from "react-colorful";
 type CtxType = {
     color: HslColor;
     view: 'full' | 'desktop' | 'tablet' | 'mobile';
+    codeOpen: false;
 }
 
 type BaseCtxType = {
@@ -20,6 +21,7 @@ const defaultContext: CtxType = {
         l: 39
     },
     view: 'desktop',
+    codeOpen: false
 }
 
 const Ctx = createContext<BaseCtxType>({

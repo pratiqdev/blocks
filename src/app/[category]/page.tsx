@@ -11,6 +11,12 @@ export async function generateStaticParams() {
 
 export default function Category({ params }:{ params: { category:string }}) {
   const cat = componentList[params.category]
+
+  if(!cat?.name) return (
+    <>
+      <p className="text-xl">No category found...</p>
+    </>
+  )
   return (
     <>
       <h1 className="text-2xl">{cat.name}</h1>

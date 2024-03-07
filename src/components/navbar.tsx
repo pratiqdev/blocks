@@ -15,11 +15,11 @@ export const Navbar = async () => {
                 <ControlPanel />
             </div>
 
-            <div className="flex pt-1">
+            {/* <div className="flex pt-1">
                 <h2 className="text-md font-medium">Components</h2>
-            </div>
+            </div> */}
 
-            <div className="flex flex-col mt-2 gap-6 h-full overflow-y-scroll border">
+            <div className="flex flex-col mt-2 gap-6 h-full overflow-y-scroll">
                 {Object.entries(componentList).map(([key, category])=> {
                     return (
                         <div key={category.name} className="flex flex-col gap-2 text-sm">

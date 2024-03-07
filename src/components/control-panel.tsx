@@ -35,8 +35,8 @@ export const ControlPanel = () => {
                     </Link>
                 </Tip>
                  <Tip text="Browse components">
-                    <Link href="/components" passHref>
-                        <ToggleGroupItem value="components" aria-label="components" className="p-2 h-auto">
+                    <Link href="/heros" passHref>
+                        <ToggleGroupItem value="hero" aria-label="hero" className="p-2 h-auto">
                             <BlocksIcon size="20"/>
                         </ToggleGroupItem>
                     </Link>
@@ -48,21 +48,7 @@ export const ControlPanel = () => {
                         </ToggleGroupItem>
                     </Link>
                 </Tip>
-                <Tip text="Change theme color">
-                    <ToggleGroupItem value="color" aria-label="Toggle desktop" className="p-2 h-auto" onClick={() => setColorOpen(b => !b)} >
-                        <div className="relative">
-                                <div className="bg-blocks-theme w-5 h-5 rounded"></div>
-                            <AnimatePresence>
-                                {colorOpen 
-                                    && <motion.div className="absolute left-5" initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x:-20, opacity:0}}>
-                                        <HslColorPicker color={ctx.color} onChange={(newColor: HslColor) => mergeCtx({ color: newColor })} />
-                                    </motion.div>
-                                }
-                            </AnimatePresence>
-                        </div>
-
-                    </ToggleGroupItem>
-                </Tip>
+               
                 
             </ToggleGroup>
 
@@ -71,29 +57,44 @@ export const ControlPanel = () => {
             </div> */}
 
             <ToggleGroup type="single" variant="outline">
-                <Tip text="Full screen view">
+                {/* <Tip text="Full screen view">
                     <ToggleGroupItem value="full-screen" aria-label="Toggle full-screen view" className="p-2 h-auto">
                         <Fullscreen size="20"/>
                     </ToggleGroupItem>
-                </Tip>
+                </Tip> */}
                 <Tip text="Desktop view">
-                    <ToggleGroupItem value="desktop" aria-label="Toggle desktop view" className="p-2 h-auto">
+                    <ToggleGroupItem value="desktop" aria-label="Toggle desktop view" className="p-2 h-auto" onClick={() => mergeCtx({ view: 'desktop' })}>
                         <MonitorIcon size="20"/>
                     </ToggleGroupItem>
                 </Tip>
                 <Tip text="Tablet view">
-                    <ToggleGroupItem value="tablet" aria-label="Toggle tablet view" className="p-2 h-auto">
+                    <ToggleGroupItem value="tablet" aria-label="Toggle tablet view" className="p-2 h-auto" onClick={() => mergeCtx({ view: 'tablet' })}>
                         <TabletIcon size="20"/>
                     </ToggleGroupItem>
                 </Tip>
                 <Tip text="Mobile view">
-                    <ToggleGroupItem value="mobile" aria-label="Toggle mobile view" className="p-2 h-auto">
+                    <ToggleGroupItem value="mobile" aria-label="Toggle mobile view" className="p-2 h-auto" onClick={() => mergeCtx({ view: 'mobile' })}>
                         <Smartphone size="20"/>
                     </ToggleGroupItem>
                 </Tip>
                 <Tip text={theme === 'dark' ? 'Enable light mode' : 'Enable dark mode'}>
                     <ToggleGroupItem  value="mode" aria-label="Toggle mobile view" className="p-2 h-auto" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                         {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+                    </ToggleGroupItem>
+                </Tip>
+                <Tip text="Change theme color">
+                    <ToggleGroupItem value="color" aria-label="Toggle desktop" className="p-2 h-auto" onClick={() => setColorOpen(b => !b)} >
+                        <div className="relative">
+                            <div className="bg-blocks-theme w-5 h-5 rounded"></div>
+                            <AnimatePresence>
+                                {colorOpen
+                                    && <motion.div key="hsl" className="absolute left-5" initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }}>
+                                        <HslColorPicker color={ctx.color} onChange={(newColor: HslColor) => mergeCtx({ color: newColor })} />
+                                    </motion.div>
+                                }
+                            </AnimatePresence>
+                        </div>
+
                     </ToggleGroupItem>
                 </Tip>
 </ToggleGroup>

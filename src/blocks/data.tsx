@@ -1,4 +1,5 @@
 import * as hero_1 from '@/blocks/hero'
+import * as hero_2 from '@/blocks/hero-2'
 import * as layout_1 from '@/blocks/layout-1'
 import * as layout_2 from '@/blocks/layout-2'
 
@@ -7,7 +8,8 @@ export const componentList:Record<string, Category> = {
         name: 'Heros',
         description: 'hero sections',
         components: {
-            'hero-1': hero_1
+            'hero-1': hero_1,
+            'hero-2': hero_2,
         }
     },
     'layout': {
