@@ -95,7 +95,7 @@ const NavbarMobile = () => {
 
                             <Accordion type="single" collapsible>
                                 {Object.entries(componentList).map(([key, category]) => 
-                                    <AccordionItem value={key}>
+                                    <AccordionItem key={key} value={key}>
                                         <AccordionTrigger><Link href={`/${key}`} className="text-sm font-light">{category.name}</Link></AccordionTrigger>
                                         <AccordionContent>
                                             {Object.entries(category.components).map(([slug, comp]) => <Link key={slug} href={`/${key}/${slug}`} className="text-sm font-light">{comp.name}</Link>)}
@@ -141,7 +141,7 @@ const NavbarDesktop = () => {
 
             <Accordion type="single" collapsible className="mx-1">
                 {Object.entries(componentList).map(([key, category]) =>
-                    <AccordionItem value={key} className="">
+                    <AccordionItem key={key} value={key} className="">
                         <AccordionTrigger className="py-1"><Link href={`/${key}`} className="text-sm font-light">{category.name}</Link></AccordionTrigger>
                         <AccordionContent className="flex flex-col">
                             {Object.entries(category.components).map(([slug, comp]) => <Link key={slug} href={`/${key}/${slug}`} className="text-sm font-light p-1 rounded hover:bg-gray-500/10 duration-200">{comp.name}</Link>)}
