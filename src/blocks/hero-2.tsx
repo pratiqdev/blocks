@@ -14,14 +14,14 @@ export const code =
  */
 export function Component() {
     return (
-        <div className="@thumb:min-h-[200px] flex justify-center items-center relative w-full h-full min-h-[43rem] @md:min-h-[52.5rem] @lg:min-h-[94vh]">
+        <div className=" flex justify-center items-center relative w-full h-full py-8">
             {/* <Image
                 alt="Hero"
                 className="absolute overflow-hidden object-cover muted"
                 fill
                 src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             /> */}
-            <div className="inset-0 flex flex-col items-center justify-center w-full gap-4 p-4 text-center bg-white/30 dark:bg-black/10">
+            <div className="inset-0 flex flex-col items-center justify-center w-full gap-4 p-4 text-center">
                 <div className="block sm:hidden">OUTER def</div>
                 <div className="hidden sm:block md:hidden">OUTER sm</div>
                 <div className="hidden md:block lg:hidden">OUTER md</div>

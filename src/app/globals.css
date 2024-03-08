@@ -5,7 +5,9 @@
 @layer base {
   :root {
     --bks-primary-hsl: 230 86% 31%;
+    --bks-primary-hsla: 230, 86%, 31%, 0.1;
     --bks-secondary-hsl: 230 76% 21%;
+    --bks-secondary-hsla: 230, 76%, 21%, 0.1;
 
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -40,7 +42,9 @@
  
   .dark {
     --bks-primary-hsl: 230 86% 31%;
+    --bks-primary-hsla: 230, 86%, 31%, 0.1;
     --bks-secondary-hsl: 130 76% 21%;
+    --bks-secondary-hsla: 130, 76%, 21%, 0.1;
 
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -82,7 +86,9 @@
 }
 
 .bg-bks-primary { background: hsl(var(--bks-primary-hsl)) }
+.bg-bks-primary-t { background: hsla(var(--bks-primary-hsla)) }
 .bg-bks-secondary { background: hsl(var(--bks-secondary-hsl)) }
+.bg-bks-secondary-t { background: hsla(var(--bks-secondary-hsla)) }
 
 .text-bks-primary { color: hsl(var(--bks-primary-hsl)) }
 .text-bks-secondary { color: hsl(var(--bks-secondary-hsl)) }

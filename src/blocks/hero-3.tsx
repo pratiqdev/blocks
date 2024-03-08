@@ -1,10 +1,10 @@
 import Image from "next/image"
 
-export const name = 'Hero 2'
+export const name = 'Hero 3'
 export const description = 'this is a hero component'
 export const code = 
 `<div className="bg-red-100 p-5">
-    hero 2
+    hero 3
 </div>`
 
 /**
@@ -14,12 +14,18 @@ export const code =
  */
 export function Component() {
     return (
-        <div className="@thumb:min-h-[1px] flex justify-center items-center relative w-full h-full min-h-[43rem] @md:min-h-[52.5rem] @lg:min-h-[94vh]">
-            <div className="inset-0 flex flex-col items-center justify-center w-full gap-4 p-4 text-center bg-white/30 dark:bg-black/10">
-                <h1 className="text-4xl font-extrabold tracking-tighter sm:text-6xl @md:text-7xl @lg:text-8xl/line-through text-blocks-theme">
-                    Create pretty apps with `ctrl` + `v`
+        <div className="flex relative justify-center items-center w-full h-full rounded">
+            <Image
+                alt="Hero"
+                className="absolute overflow-hidden object-cover z-0 opacity-20"
+                fill
+                src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
+            <div className="inset-0 flex flex-col items-center justify-center w-full gap-4 p-4 py-8 flex-1 text-center z-10">
+                <h1 className="text-3xl @md:text-5xl font-extrabold tracking-tighter text-bks-primary">
+                    Beautiful Websites
                 </h1>
-                <div className="block h-[2px] w-[20rem] max-w-[70%] bg-blocks-theme" />
+                <div className="block h-[2px] w-[20rem] max-w-[70%] bg-bks-primary" />
                 <p className="max-w-[700px] text-gray-500 @md:text-xl dark:text-gray-400">
                     Easily create stunning web experiences with our platform. No complicated setup. Just beautiful results.
                 </p>

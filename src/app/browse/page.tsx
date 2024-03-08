@@ -30,12 +30,12 @@ export default function Home() {
                 {Object.entries(category.components).map(([slug, comp]) => 
                   <Link key={slug} href={`/${key}/${slug}`} className="text-sm font-light" passHref>
                     <Card key={slug} className="overflow-hidden w-[200px] shadow-lg" >
-                      <CardHeader className="p-2 mb-4">
+                      <CardHeader className="p-2 mb-0">
                         <CardTitle className="text-md">{comp.name}</CardTitle>
                         <CardDescription>{comp.description}</CardDescription>
                       </CardHeader>
                       <CardContent className="w-[200px] h-[200px] overflow-hidden flex items-center justify-center pb-0">
-                        <div className="@container flex justify-stretch w-full items-start min-w-[400px] max-w-[400px] min-h-[400px] max-h-[400px] bg-gray-500/5 scale-[.5]">
+                        <div className="@container flex justify-stretch w-full items-start min-w-[400px] max-w-[400px] min-h-[400px] max-h-[400px] bg-bks-primary-t scale-[.5]">
                         {/* <Image fill src={'https://placekitten.com/200/200'} alt="preview image" className="p-2"/> */}
                         <comp.Component />
                         </div>

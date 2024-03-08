@@ -67,17 +67,20 @@ export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode
         if (Object.keys(secondaryColor).length > 0) {
             mergeCtx({ secondaryColor });
         }
-    }); 
+        
+    }, []); 
 
     useEffect(() => {
         window?.localStorage?.setItem('bks_primary_color', JSON.stringify({ h:ph, s:ps, l:pl }))
         document?.documentElement?.style?.setProperty('--bks-primary-hsl', `${ph} ${ps}% ${pl}%`);
+        document?.documentElement?.style?.setProperty('--bks-primary-hsla', `${ph}, ${ps}%, ${pl}%, 0.1`);
     }, [ph, ps, pl])
     
     
     useEffect(() => {
         window?.localStorage?.setItem('bks_secondary_color', JSON.stringify({ h:sh, s:ss, l:sl }))
         document?.documentElement?.style?.setProperty('--bks-secondary-hsl', `${sh} ${ss}% ${sl}%`);
+        document?.documentElement?.style?.setProperty('--bks-secondary-hsla', `${sh}, ${ss}%, ${sl}%, 0.1`);
     }, [sh, ss, sl])
 
     return (
