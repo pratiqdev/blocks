@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Tip } from "@/components/tip"
-import { HomeIcon, FrameIcon, BlocksIcon, Settings2Icon, MonitorIcon, Fullscreen, TabletIcon, Smartphone, SunIcon, MoonIcon } from "lucide-react"
+import { HomeIcon, FrameIcon, BlocksIcon, Settings2Icon, MonitorIcon, Fullscreen, TabletIcon, Smartphone, SunIcon, MoonIcon, FileQuestion, CheckCircle } from "lucide-react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { HslColor, HslColorPicker } from 'react-colorful'
@@ -30,15 +30,15 @@ export const ControlPanel = () => {
                         </ToggleGroupItem>
                     </Link>
                 </Tip>
-                <Tip text="Browse layouts">
-                    <Link href="/layout" passHref tabIndex={-1}>
+                <Tip text="Getting started">
+                    <Link href="/getting-started" passHref tabIndex={-1}>
                         <ToggleGroupItem value="layouts" aria-label="Layouts" className="p-4 lg:p-2 h-auto" tabIndex={2}>
-                            <FrameIcon size="20"/>
+                            <CheckCircle size="20"/>
                         </ToggleGroupItem>
                     </Link>
                 </Tip>
                  <Tip text="Browse components">
-                    <Link href="/heros" passHref tabIndex={-1}>
+                    <Link href="/browse" passHref tabIndex={-1}>
                         <ToggleGroupItem value="hero" aria-label="hero" className="p-4 lg:p-2 h-auto" tabIndex={3}>
                             <BlocksIcon size="20"/>
                         </ToggleGroupItem>

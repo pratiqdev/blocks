@@ -7,7 +7,7 @@ export const code =
 
 export function Component() {
     return (
-        <div className="bg-red-100 p-5">
+        <div className="bg-red-100 p-5 w-full">
             Layout 1
         </div>
     )

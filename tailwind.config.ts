@@ -19,9 +19,10 @@ const config = {
     },
     extend: {
       containers: {
-        'sm': '22rem',
+        'sm': '20rem',
         'md': '34rem',
         'lg': '40rem',
+        'thumb': '1px',
       },
       colors: {
         border: "hsl(var(--border))",

@@ -50,6 +50,7 @@ export const useCtx = () => {
     return context;
 };
 
+
 export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const [ctx, setCtx] = useState<CtxType>(defaultContext);
     const mergeCtx = (newCtx: Partial<CtxType>) => setCtx((prevCtx) => ({ ...prevCtx, ...newCtx }));
@@ -58,11 +59,24 @@ export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode
     const { h:sh, s:ss, l:sl } = ctx.secondaryColor
 
     useEffect(() => {
-        document?.documentElement?.style?.setProperty('--bks-primary-hsl', `${ph} ${ps}% ${pl}%`);
-    }, [ph, ps, pl])
-
+        const primaryColor = JSON.parse(window.localStorage.getItem('bks_primary_color') || '{}');
+        const secondaryColor = JSON.parse(window.localStorage.getItem('bks_secondary_color') || '{}');
+        if (Object.keys(primaryColor).length > 0) {
+            mergeCtx({ primaryColor });
+        }
+        if (Object.keys(secondaryColor).length > 0) {
+            mergeCtx({ secondaryColor });
+        }
+    }, []); 
 
     useEffect(() => {
+        window?.localStorage?.setItem('bks_primary_color', JSON.stringify(ctx.primaryColor))
+        document?.documentElement?.style?.setProperty('--bks-primary-hsl', `${ph} ${ps}% ${pl}%`);
+    }, [ph, ps, pl])
+    
+    
+    useEffect(() => {
+        window?.localStorage?.setItem('bks_secondary_color', JSON.stringify(ctx.secondaryColor))
         document?.documentElement?.style?.setProperty('--bks-secondary-hsl', `${sh} ${ss}% ${sl}%`);
     }, [sh, ss, sl])
 

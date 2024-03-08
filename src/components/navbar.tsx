@@ -4,6 +4,13 @@ import Link from "next/link"
 import { componentList } from "@/blocks/data"
 import { ControlPanel } from "./control-panel"
 import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
+
+import {
     Sheet,
     SheetContent,
     SheetDescription,
@@ -86,8 +93,19 @@ const NavbarMobile = () => {
                                     )}
                             </div>
 
+                            <Accordion type="single" collapsible>
+                                {Object.entries(componentList).map(([key, category]) => 
+                                    <AccordionItem value={key}>
+                                        <AccordionTrigger><Link href={`/${key}`} className="text-sm font-light">{category.name}</Link></AccordionTrigger>
+                                        <AccordionContent>
+                                            {Object.entries(category.components).map(([slug, comp]) => <Link key={slug} href={`/${key}/${slug}`} className="text-sm font-light">{comp.name}</Link>)}
+                                        </AccordionContent>
+                                    </AccordionItem>
+                                )}
+                            </Accordion>
 
-                            <div className="flex flex-1 flex-col items-start mt-2 gap-6 h-full max-h-[70vh] overflow-y-scroll">
+
+                            {/* <div className="flex flex-1 flex-col items-start mt-2 gap-2 h-full max-h-[70vh] overflow-y-scroll">
                                 {Object.entries(componentList).map(([key, category]) => {
                                     return (
                                         <div key={category.name} className="flex flex-col gap-2 text-sm items-start w-full">
@@ -96,7 +114,8 @@ const NavbarMobile = () => {
                                         </div>
                                     )
                                 })}
-                            </div>
+                            </div> */}
+                            
                         </div>
                     </SheetDescription>
                 </SheetHeader>
@@ -116,9 +135,21 @@ const NavbarDesktop = () => {
             </div>
 
             {/* <div className="flex pt-1">
-                <h2 className="text-md font-medium">Components</h2>
+                <h2 className="text-
+                md font-medium">Components</h2>
             </div> */}
 
+            <Accordion type="single" collapsible className="mx-1">
+                {Object.entries(componentList).map(([key, category]) =>
+                    <AccordionItem value={key} className="">
+                        <AccordionTrigger className="py-1"><Link href={`/${key}`} className="text-sm font-light">{category.name}</Link></AccordionTrigger>
+                        <AccordionContent className="flex flex-col">
+                            {Object.entries(category.components).map(([slug, comp]) => <Link key={slug} href={`/${key}/${slug}`} className="text-sm font-light p-1 rounded hover:bg-gray-500/10 duration-200">{comp.name}</Link>)}
+                        </AccordionContent>
+                    </AccordionItem>
+                )}
+            </Accordion>
+{/* 
             <div className="flex flex-col mt-2 gap-6 h-full overflow-y-scroll px-1" tabIndex={0}>
                 {Object.entries(componentList).map(([key, category]) => {
                     return (
@@ -129,6 +160,7 @@ const NavbarDesktop = () => {
                     )
                 })}
             </div>
+             */}
         </div>
     )
 }

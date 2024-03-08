@@ -14,7 +14,7 @@ export const code =
  */
 export function Component() {
     return (
-        <div className="flex justify-center items-center relative w-full h-full min-h-[43rem] @md:min-h-[52.5rem] @lg:min-h-[94vh]">
+        <div className="@thumb:min-h-[200px] flex justify-center items-center relative w-full h-full min-h-[43rem] @md:min-h-[52.5rem] @lg:min-h-[94vh]">
             {/* <Image
                 alt="Hero"
                 className="absolute overflow-hidden object-cover muted"
