@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { StateProvider } from "@/components/state-provider";
 import { CtxDisplay } from "@/components/ctx-display";
+import { ContrastDialog } from "@/components/contrast-dialog";
 
 
 
@@ -28,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-          "min-h-screen bg-background font-sans antialiased flex",
+          "min-h-screen bg-background font-sans antialiased flex w-screen",
           fontSans.variable
         )}
       >
@@ -40,11 +41,17 @@ export default function RootLayout({
             disableTransitionOnChange
           >
 
+
             <Navbar />
-            <main className="flex min-h-screen flex-col justify-start flex-1 bg-gray-500/3 bg-grid">
-              {children}
+            <main className="flex min-h-screen flex-col justify-start flex-1 bg-gray-500/3">
+              <div className="bg-bks-gradient">
+                <div className="bg-grid">
+                  {children}
+                </div>
+              </div>
             </main>
               
+            <ContrastDialog />
           </ThemeProvider>
         </StateProvider>
       </body>

@@ -32,9 +32,11 @@ export async function generateStaticParams() {
 
 export default function Layout({ params, children }: { params: { category: string }, children: React.ReactNode }) {
     return (
-      <div className="p-4">
-        {/* <pre>CATEGORY LAYOUT PARAMS: {JSON.stringify(params, null, 2)}</pre> */}
-        {children}
+      <div className="flex p-2 min-h-screen items-center justify-center">
+        <div className="w-full">
+          {/* <pre>CATEGORY LAYOUT PARAMS: {JSON.stringify(params, null, 2)}</pre> */}
+          {children}
+        </div>
       </div>
     );
 }

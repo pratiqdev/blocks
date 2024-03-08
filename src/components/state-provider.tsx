@@ -3,9 +3,12 @@ import { createContext, useContext, useState, SetStateAction, Dispatch, useEffec
 import { HslColor } from "react-colorful";
 
 type CtxType = {
-    color: HslColor;
+    primaryColor: HslColor;
+    secondaryColor: HslColor;
     view: 'full' | 'desktop' | 'tablet' | 'mobile';
     codeOpen: false;
+    activeMenu: 'main' | 'color';
+    contrastWarning: boolean;
 }
 
 type BaseCtxType = {
@@ -15,13 +18,20 @@ type BaseCtxType = {
 }
 
 const defaultContext: CtxType = {
-    color: {
+    primaryColor: {
         h: 230,
         s: 65,
-        l: 39
+        l: 59
+    },
+    secondaryColor: {
+        h: 130,
+        s: 0,
+        l: 69
     },
     view: 'desktop',
-    codeOpen: false
+    codeOpen: false,
+    activeMenu: 'main',
+    contrastWarning: true
 }
 
 const Ctx = createContext<BaseCtxType>({
@@ -42,12 +52,19 @@ export const useCtx = () => {
 
 export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const [ctx, setCtx] = useState<CtxType>(defaultContext);
-
     const mergeCtx = (newCtx: Partial<CtxType>) => setCtx((prevCtx) => ({ ...prevCtx, ...newCtx }));
 
+    const { h:ph, s:ps, l:pl } = ctx.primaryColor
+    const { h:sh, s:ss, l:sl } = ctx.secondaryColor
+
     useEffect(() => {
-        document?.documentElement?.style?.setProperty('--blocks-theme-hsl', `${ctx.color.h} ${ctx.color.s}% ${ctx.color.l}%`);
-    }, [ctx])
+        document?.documentElement?.style?.setProperty('--bks-primary-hsl', `${ph} ${ps}% ${pl}%`);
+    }, [ph, ps, pl])
+
+
+    useEffect(() => {
+        document?.documentElement?.style?.setProperty('--bks-secondary-hsl', `${sh} ${ss}% ${sl}%`);
+    }, [sh, ss, sl])
 
     return (
         <Ctx.Provider value={{ ctx, mergeCtx }}>
