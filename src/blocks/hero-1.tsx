@@ -1,5 +1,5 @@
-export const name = 'Hero 1'
-export const description = 'this is a hero component'
+export const name = 'Cool beta'
+export const description = 'cta and sign up'
 export const code = 
 `<div className="bg-red-100 p-5">
     hero 1

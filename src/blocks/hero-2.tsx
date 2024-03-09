@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-export const name = 'Hero 2'
-export const description = 'this is a hero component'
+export const name = 'Quick intro'
+export const description = 'title and long subtext'
 export const code = 
 `<div className="bg-red-100 p-5">
     hero 2
