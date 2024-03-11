@@ -4,6 +4,17 @@ import * as hero_3 from '@/blocks/hero-3'
 import * as layout_1 from '@/blocks/layout-1'
 import * as layout_2 from '@/blocks/layout-2'
 
+type ComponentData = {
+    name: string;
+    slug: string;
+    description: string;
+    Component: React.JSXElementConstructor<any>
+}
+
+export const components:ComponentData[] = [
+    hero_1,
+]
+
 export const componentList:Record<string, Category> = {
     'heros': {
         name: 'Heros',

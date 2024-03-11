@@ -130,6 +130,8 @@
   background: hsl(var(--bks-primary-hsl));
   box-shadow: 0 0 300px 300px hsl(var(--bks-primary-hsl));
   opacity: .5;
+  transition-timing-function: ease-in-out;
+  transition-duration: 2000;
   @apply dark:translate-y-[80vh] transition-transform duration-300 lg:left-[12rem] dark:opacity-20
 }
 
@@ -145,7 +147,9 @@
   background: hsl(var(--bks-secondary-hsl));
   box-shadow: 0 0 300px 300px hsl(var(--bks-secondary-hsl));
   opacity: .5;
-  @apply dark:translate-y-[-60vh] transition-transform duration-300 lg:right-[12rem] dark:opacity-20
+  transition-timing-function: ease-in-out;
+  transition-duration: 1800;
+  @apply dark:translate-y-[-60vh] transition-transform lg:right-[12rem] dark:opacity-20
 }
 
 .bg-grid {
