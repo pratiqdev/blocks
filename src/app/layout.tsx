@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(
-          "min-h-screen bg-background font-sans antialiased flex w-screen",
+          "min-h-screen bg-background font-sans antialiased flex w-screen relative",
           fontSans.variable
         )}
       >
@@ -43,7 +43,7 @@ export default function RootLayout({
 
 
             <Navbar />
-            <main className="flex min-h-screen flex-col justify-start flex-1 bg-gray-500/3">
+            <main className="absolute left-[2.5rem] md:left-0 right-0 top-0 bottom-0 md:relative z-0 flex min-h-screen flex-col justify-start flex-1 bg-gray-500/3">
               <div className="bg-bks-gradient">
                 <div className="bg-grid">
                   {children}

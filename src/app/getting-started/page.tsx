@@ -1,5 +1,5 @@
 "use client"
-import { componentList } from "@/blocks/data";
+import { components } from "@/blocks/data";
 import { useCtx } from "@/components/state-provider";
 import Image from "next/image";
 import Link from "next/link";

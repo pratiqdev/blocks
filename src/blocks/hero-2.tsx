@@ -1,17 +1,13 @@
 import Image from "next/image"
+import { CompMeta } from '@/blocks/data'
 
-export const name = 'Quick intro'
-export const description = 'title and long subtext'
-export const code = 
-`<div className="bg-red-100 p-5">
-    hero 2
-</div>`
+export const meta:CompMeta = {
+    slug: 'hero-2',
+    name: 'Quick intro',
+    description: 'title and long subtext',
+    code: `<div>!!!code!!!</div>`
+}
 
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/fytcoI2i9NY
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 export function Component() {
     return (
         <div className=" flex justify-center items-center relative w-full h-full py-8">

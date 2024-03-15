@@ -1,13 +1,14 @@
 "use client"
-import { componentList } from "@/blocks/data";
+import { components } from "@/blocks/data";
 import { useCtx } from "@/components/state-provider";
 import Image from "next/image";
 import Link from "next/link";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { MainHeading } from "@/components/typography";
 
 const Item = ({ children }:{ children: React.ReactNode }) => (
-  <div className="flex items-center justify-between bg-gray-500/10 hover:bg-gray-500/20 px-4 py-4 rounded-lg duration-200">
+  <div className="flex items-center justify-between bg-gray-500/10 hover:bg-gray-500/20 px-4 py-4 rounded-lg duration-200 gap-4">
     {children}
   </div>
 )
@@ -17,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-4 border border-green-500 max-w-screen">
-      <h1 className="text-2xl">Settings</h1>
+      <MainHeading>Settings</MainHeading>
 
       <div className="flex flex-col gap-2 lg:gap-2 w-full lg:min-w-[80ch] max-w-screen mt-6">
 

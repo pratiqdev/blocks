@@ -1,18 +1,8 @@
-export const name = 'Cool beta'
-export const description = 'cta and sign up'
-export const code = 
-`<div className="bg-red-100 p-5">
-    hero 1
-</div>`
+import { CompMeta } from "./data"
 
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/Hibtz6weBIe
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card"
 
 export function Component() {
     return (
@@ -40,4 +30,12 @@ export function Component() {
             </div>
         </section>
     )
+}
+
+
+export const meta: CompMeta = {
+    slug: 'hero-1',
+    name: 'Cool beta',
+    description: 'cta and sign up',
+    code: `<p>!</p>`
 }

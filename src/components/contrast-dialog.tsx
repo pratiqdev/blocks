@@ -34,9 +34,10 @@ export const ContrastDialog = () => {
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>
-                            <p className="text-xl flex gap-2">
-                                Poor contrast with theme <div className="bg-background text-blocks-theme border rounded px-1">Example text</div>
+                            <p className="text-xl flex gap-2 flex-col md:flex-row">
+                                Poor contrast with theme <div className="bg-bks-gradient-strong text-bks-primary border rounded px-1">Example text</div>
                             </p>
+                           
                         </DialogTitle>
                         <DialogDescription>
                             <p className="text-lg py-4">
@@ -47,9 +48,9 @@ export const ContrastDialog = () => {
 
                         </DialogDescription>
                     </DialogHeader>
-                    <DialogFooter className="flex !justify-between">
+                    <DialogFooter className="flex !justify-center flex-col items-center">
                         <Button variant="outline" onClick={() => mergeCtx({ contrastWarning: false })}>Don&apos;t remind me</Button>
-                        <div>
+                        <div className="flex justify-between md:justify-end w-full mt-2 md:mt-0">
                             {reason === 'should dark' ? <>
                                 <Button onClick={() => setReason(null)} variant="ghost">Stay light</Button>
                                 <Button onClick={() => setTheme('dark')}>Go dark</Button>

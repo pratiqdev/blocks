@@ -1,14 +1,15 @@
 "use client"
-import { createContext, useContext, useState, SetStateAction, Dispatch, useEffect } from "react";
+import { createContext, useContext, useState, SetStateAction, Dispatch, useEffect, useRef } from "react";
 import { HslColor } from "react-colorful";
 
 type CtxType = {
     primaryColor: HslColor;
     secondaryColor: HslColor;
     view: 'full' | 'desktop' | 'tablet' | 'mobile';
-    codeOpen: false;
+    codeOpen: boolean;
     activeMenu: 'main' | 'color';
     contrastWarning: boolean;
+    isColorPanelOpen: boolean;
 }
 
 type BaseCtxType = {
@@ -19,17 +20,18 @@ type BaseCtxType = {
 
 const defaultContext: CtxType = {
     primaryColor: {
-        h: 230,
-        s: 65,
-        l: 59
+        h: 0,
+        s: 0,
+        l: 0
     },
     secondaryColor: {
-        h: 130,
+        h: 0,
         s: 0,
-        l: 69
+        l: 30
     },
     view: 'desktop',
     codeOpen: false,
+    isColorPanelOpen: false,
     activeMenu: 'main',
     contrastWarning: true
 }
@@ -51,6 +53,20 @@ export const useCtx = () => {
 };
 
 
+function useUpdateEffect(callback: () => any, dependencies: any[]) {
+    const firstRenderRef = useRef(true);
+
+    useEffect(() => {
+        if (firstRenderRef.current) {
+            firstRenderRef.current = false;
+            return;
+        }
+
+        return callback();
+    }, dependencies);
+}
+
+
 export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const [ctx, setCtx] = useState<CtxType>(defaultContext);
     const mergeCtx = (newCtx: Partial<CtxType>) => setCtx((prevCtx) => ({ ...prevCtx, ...newCtx }));
@@ -70,17 +86,27 @@ export const StateProvider = ({ children }: Readonly<{ children: React.ReactNode
         
     }, []); 
 
-    useEffect(() => {
-        window?.localStorage?.setItem('bks_primary_color', JSON.stringify({ h:ph, s:ps, l:pl }))
+    useUpdateEffect(() => {
+        try{
+            console.log('setting new primary color to storage')
+            window?.localStorage?.setItem('bks_primary_color', JSON.stringify({ h:ph, s:ps, l:pl }))
+        }catch(err){
+            console.log('error setting theme color to local storage:', err)
+        }
         document?.documentElement?.style?.setProperty('--bks-primary-hsl', `${ph} ${ps}% ${pl}%`);
-        document?.documentElement?.style?.setProperty('--bks-primary-hsla', `${ph}, ${ps}%, ${pl}%, 0.1`);
+        document?.documentElement?.style?.setProperty('--bks-primary-hsla', `${ph}, ${ps}%, ${pl}%, 0.05`);
     }, [ph, ps, pl])
     
     
-    useEffect(() => {
-        window?.localStorage?.setItem('bks_secondary_color', JSON.stringify({ h:sh, s:ss, l:sl }))
+    useUpdateEffect(() => {
+        try{
+            console.log('setting new secondary color to storage')
+            window?.localStorage?.setItem('bks_secondary_color', JSON.stringify({ h:sh, s:ss, l:sl }))
+        }catch (err) {
+            console.log('error setting theme color to local storage:', err)
+        }
         document?.documentElement?.style?.setProperty('--bks-secondary-hsl', `${sh} ${ss}% ${sl}%`);
-        document?.documentElement?.style?.setProperty('--bks-secondary-hsla', `${sh}, ${ss}%, ${sl}%, 0.1`);
+        document?.documentElement?.style?.setProperty('--bks-secondary-hsla', `${sh}, ${ss}%, ${sl}%, 0.05`);
     }, [sh, ss, sl])
 
     return (
