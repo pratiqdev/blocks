@@ -19,7 +19,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "./ui/button"
-import { BlocksIcon, HomeIcon, LucideIcon, MenuIcon, MoonIcon, Settings2, SunIcon } from "lucide-react"
+import { BlocksIcon, Code, HomeIcon, LucideIcon, MenuIcon, MoonIcon, Settings2, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useCtx } from "./state-provider"
 import { JSXElementConstructor, useState } from "react"
@@ -80,6 +80,10 @@ const Sidebar = () => {
                     <Settings2 />
                 </Button>
             </Link>
+
+            <Button className="" variant='link' onClick={() => mergeCtx({ codeOpen: !ctx.codeOpen })}>
+                <Code />
+            </Button>
 
 
 
@@ -209,6 +213,11 @@ const NavbarMobile = () => {
                                         Edit settings
                                     </Button>
                                 </Link>
+
+                                <Button className="w-full justify-start gap-2 pl-0" variant='link' onClick={() => mergeCtx({ codeOpen: !ctx.codeOpen })}>
+                                    <Code />
+                                    Show Code
+                                </Button>
                                 
                                 {/* {mobileOptions.map(opt => opt.href
                                     ? <Link key={opt.label} href={opt.href} passHref><Button className="w-full justify-start gap-2 pl-0" variant='link'><opt.icon size="20" />{opt.label}</Button></Link>
